@@ -1,0 +1,42 @@
+.exhibitions {
+  padding: 4rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.exhibitions-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  font-weight: 300;
+}
+
+.exhibition-feature {
+  background: white;
+  border-radius: 8px;
+  padding: 3rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.exhibition-heading {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+}
+
+.exhibition-subheading {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 3rem;
+  font-weight: 400;
+}
+
+.exhibition-content {
+  display: block;
+  margin-bottom: 4rem;
+  overflow: hidden; /* Creates new block formatting context */
+}
+
+.exhibition-image {
+  float: left;
+}

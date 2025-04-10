@@ -1,0 +1,28 @@
+{
+  "hero": {
+    "image": "/images/artworks/Unus Mundus.jpg",
+    "alt": "BelleColleen - Unus Mundus",
+    "title": "BelleColleen",
+    "subtitle": "A Journey Through Mystical Art and Symbolism"
+  },
+  "items": [
+    {
+      "id": 1,
+      "title": "The Heart of the Mystic Rose",
+      "image": "/images/artworks/The Heart of the Mystic Rose.jpg",
+      "description": "A profound exploration of mystical symbolism and inner transformation."
+    },
+    {
+      "id": 2,
+      "title": "Sophia",
+      "image": "/images/artworks/Sophia.jpg",
+      "description": "Embodying divine wisdom and spiritual enlightenment."
+    },
+    {
+      "id": 3,
+      "title": "Secret of the Golden Flower",
+      "image": "/images/artworks/Secret of the Golden Flower.jpg",
+      "description": "Ancient wisdom revealing the path to spiritual consciousness."
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+.about {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.about-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.about-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.artwork-section {
+  margin-bottom: 3rem;
+}
+
+.medium-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.artwork-list {
+  list-style: none;
+  padding: 0;
+}
+
+.artwork-list li {
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.note {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+  font-style: italic;
+}
+
+.note p {
+  text-align: center;
+  color: #666;
+}

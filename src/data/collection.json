@@ -1,0 +1,176 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "title": "Anima",
+      "image": "/images/artworks/Anima.jpg",
+      "medium": "Acrylic with metallic and ink",
+      "description": "Representing the feminine aspect of the psyche in Jungian psychology."
+    },
+    {
+      "id": 2,
+      "title": "Bollingen",
+      "image": "/images/artworks/Bollingen.jpg",
+      "medium": "Acrylic with metallic and ink",
+      "description": "Inspired by Carl Jung's retreat at Bollingen Tower."
+    },
+    {
+      "id": 3,
+      "title": "Burghölzli",
+      "image": "/images/artworks/Burghölzli.jpg",
+      "medium": "Acrylic with metallic and ink",
+      "description": "Named after the psychiatric hospital where Jung worked.",
+      "notes": "Acrylic & wax on reverse"
+    },
+    {
+      "id": 4,
+      "title": "Chiwantopel",
+      "image": "/images/artworks/Chiwantopel.jpg",
+      "medium": "Acrylic with metallic and ink",
+      "description": "Based on Jung's vision of an American Indian chief.",
+      "notes": "Watercolour on reverse"
+    },
+    {
+      "id": 5,
+      "title": "Dalada-Maligawa",
+      "image": "/images/artworks/Dalada-Maligawa.jpg",
+      "medium": "Acrylic with metallic and ink",
+      "description": "Inspired by the Temple of the Sacred Tooth Relic in Kandy, Sri Lanka."
+    },
+    {
+      "id": 6,
+      "title": "Emma",
+      "image": "/images/artworks/Emma.jpg",
+      "medium": "Acrylic with metallic and ink",
+      "description": "Named after Emma Jung, Carl Jung's wife and fellow analyst."
+    },
+    {
+      "id": 7,
+      "title": "Flüeli",
+      "image": "/images/artworks/Flüeli.jpg",
+      "medium": "Acrylic with metallic and ink",
+      "description": "Reference to Flüeli-Ranft, home of Swiss saint Nicholas of Flüe."
+    },
+    {
+      "id": 8,
+      "title": "Fomalhaut",
+      "image": "/images/artworks/Fomalhaut.jpg",
+      "medium": "Acrylic with metallic and ink",
+      "description": "Named after one of the brightest stars in the night sky."
+    },
+    {
+      "id": 9,
+      "title": "Konarak",
+      "image": "/images/artworks/Konarak.jpg",
+      "medium": "Acrylic with metallic and ink",
+      "description": "Inspired by the Sun Temple at Konark, India."
+    },
+    {
+      "id": 10,
+      "title": "Laufen",
+      "image": "/images/artworks/Laufen.jpg",
+      "medium": "Acrylic with metallic and ink",
+      "description": "A dynamic exploration of movement and flow."
+    },
+    {
+      "id": 11,
+      "title": "Maria",
+      "image": "/images/artworks/Maria.jpg",
+      "medium": "Unknown",
+      "description": "Description pending."
+    },
+    {
+      "id": 12,
+      "title": "Pardes Rimmonim",
+      "image": "/images/artworks/Pardes Rimmonim.jpg",
+      "medium": "Acrylic with metallic and ink",
+      "description": "Reference to the mystical Jewish text 'Garden of Pomegranates'."
+    },
+    {
+      "id": 13,
+      "title": "Rejaf",
+      "image": "/images/artworks/Rejaf.jpg",
+      "medium": "Unknown",
+      "description": "Description pending."
+    },
+    {
+      "id": 14,
+      "title": "Sanchi",
+      "image": "/images/artworks/Sanchi.jpg",
+      "medium": "Unknown",
+      "description": "Description pending."
+    },
+    {
+      "id": 15,
+      "title": "Secret of the Golden Flower",
+      "image": "/images/artworks/Secret of the Golden Flower.jpg",
+      "medium": "Acrylic with metallic and ink",
+      "description": "Based on the Taoist text of spiritual awakening."
+    },
+    {
+      "id": 16,
+      "title": "Sophia",
+      "image": "/images/artworks/Sophia.jpg",
+      "medium": "Pastel",
+      "description": "Embodying divine wisdom and spiritual enlightenment."
+    },
+    {
+      "id": 17,
+      "title": "Sousse",
+      "image": "/images/artworks/Sousse.jpg",
+      "medium": "Unknown",
+      "description": "Description pending."
+    },
+    {
+      "id": 18,
+      "title": "Sälig Lüt",
+      "image": "/images/artworks/Sälig Lüt.jpg",
+      "medium": "Pastel",
+      "description": "Swiss German for 'Blessed People'.",
+      "notes": "Acrylic on reverse"
+    },
+    {
+      "id": 19,
+      "title": "Taos",
+      "image": "/images/artworks/Taos.jpg",
+      "medium": "Unknown",
+      "description": "Description pending."
+    },
+    {
+      "id": 20,
+      "title": "The Diver",
+      "image": "/images/artworks/The Diver.jpg",
+      "medium": "Acrylic with metallic and ink",
+      "description": "Symbolizing the journey into the depths of consciousness."
+    },
+    {
+      "id": 21,
+      "title": "The Heart of the Mystic Rose",
+      "image": "/images/artworks/The Heart of the Mystic Rose.jpg",
+      "medium": "Unknown",
+      "description": "Description pending."
+    },
+    {
+      "id": 22,
+      "title": "Tozeur",
+      "image": "/images/artworks/Tozeur.jpg",
+      "medium": "Acrylic with metallic and ink",
+      "description": "Inspired by the desert oasis in Tunisia.",
+      "notes": "Watercolour on reverse"
+    },
+    {
+      "id": 23,
+      "title": "Unus Mundus",
+      "image": "/images/artworks/Unus Mundus.jpg",
+      "medium": "Unknown",
+      "description": "Description pending."
+    },
+    {
+      "id": 24,
+      "title": "Vitznau",
+      "image": "/images/artworks/Vitznau.jpg",
+      "medium": "Unknown",
+      "description": "Description pending."
+    }
+  ]
+}
