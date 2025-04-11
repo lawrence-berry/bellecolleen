@@ -36,7 +36,11 @@ export default function Home() {
             <h2 className="featured-title">Featured Works</h2>
             <div className="featured-grid">
               {featuredItems.map((item) => (
-                <div key={item.id} className="card">
+                <Link 
+                  key={item.id} 
+                  href={`/collection?artwork=${encodeURIComponent(item.image)}`}
+                  className="card"
+                >
                   <div className="card-image-container">
                     <Image
                       src={item.image}
@@ -48,11 +52,8 @@ export default function Home() {
                   <div className="card-content">
                     <h3 className="card-title">{item.title}</h3>
                     <p className="card-description">{item.description}</p>
-                    <Link href={`/collection/${item.id}`} className="card-link">
-                      View Details →
-                    </Link>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

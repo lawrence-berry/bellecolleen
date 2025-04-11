@@ -2,11 +2,15 @@ import Layout from '../components/Layout';
 import Image from 'next/image';
 import { useState, useCallback, useEffect } from 'react';
 import collectionData from '../data/collection.json';
+import { useRouter } from 'next/router';
 
 // Replace the hardcoded allItems with the imported data
 const allItems = collectionData.items;
 
 export default function Collection() {
+  const router = useRouter();
+  const { artwork } = router.query;
+
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [isSlideshowActive, setIsSlideshowActive] = useState(false);
 
@@ -42,6 +46,16 @@ export default function Collection() {
       return () => clearInterval(timer);
     }
   }, [isSlideshowActive, nextSlide]);
+
+  useEffect(() => {
+    if (artwork && typeof artwork === 'string') {
+      // Find the index of the artwork by matching the filename
+      const index = allItems.findIndex(item => item.image === artwork);
+      if (index !== -1) {
+        setSelectedImage(index + 1);
+      }
+    }
+  }, [artwork]);
 
   return (
     <Layout>

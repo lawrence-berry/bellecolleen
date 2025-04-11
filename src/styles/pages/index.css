@@ -44,8 +44,8 @@
 
 .featured-title {
   text-align: center;
+  margin-bottom: 2rem;
   font-size: 2.5rem;
-  margin-bottom: 3rem;
 }
 
 .featured-grid {
@@ -55,10 +55,18 @@
 }
 
 .card {
-  background: white;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s;
   border-radius: 0.5rem;
   overflow: hidden;
+  background: white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-4px);
 }
 
 .card-image-container {
@@ -69,11 +77,12 @@
 
 .card-content {
   padding: 1.5rem;
+  text-align: center;
 }
 
 .card-title {
-  font-size: 1.25rem;
   margin-bottom: 0.5rem;
+  font-size: 1.25rem;
 }
 
 .card-description {
