@@ -45,19 +45,9 @@
   padding: 1rem;
 }
 
-.modal-title {
-  position: absolute;
-  bottom: 20px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  color: white;
-  font-size: 1.5rem;
-  padding: 10px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
 /* Modal styles should be moved to modal.css */
+
+/* Remove these duplicated styles */
 
 .collection-header {
   display: flex;
@@ -75,36 +65,8 @@
   margin: 0 auto;
 }
 
-.slideshow-controls {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
+/* Remove these duplicated styles */
 
-.slideshow-button {
-  background: none;
-  border: none;
-  color: #111827;
-  cursor: pointer;
-  padding: 0.5rem;  /* Slightly reduced padding to match new size */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.7;
-  transition: opacity 0.2s;
-}
-
-.slideshow-button:hover {
-  opacity: 1;
-}
-
-.play-icon {
-  width: 38px;  /* Reduced by 20% from 48px */
-  height: 38px;  /* Reduced by 20% from 48px */
-}
-
-/* Remove any shared class names with modal, use collection-specific names */
 .collection-slideshow-button {
   position: absolute;
   right: 0;
