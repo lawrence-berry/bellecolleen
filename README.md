@@ -32,6 +32,8 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 ## TODO
 
 * Dark mode
-* Splash screen
+* Accessible
+* Performance
 * Responsive layout
 * Deployment
+* SEO

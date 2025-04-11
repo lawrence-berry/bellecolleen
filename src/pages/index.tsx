@@ -1,4 +1,5 @@
 import Layout from '../components/Layout';
+import Splash from '../components/Splash';
 import Image from 'next/image';
 import Link from 'next/link';
 import featuredData from '../data/featured.json';
@@ -8,6 +9,7 @@ export default function Home() {
 
   return (
     <Layout>
+      <Splash />
       <div>
         <div className="hero">
           <Image

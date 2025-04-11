@@ -1,24 +1,22 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
-const Splash = () => {
+export default function Splash() {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(false);
-    }, 2000); // Show for 2 seconds
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
-
-  if (!isVisible) return null;
 
   return (
     <div className={`splash ${!isVisible ? 'splash-exit' : ''}`}>
       <div className="splash-content">
         <Image
-          src="/images/logo.png"
+          src="/images/main-logo.png"
           alt="BelleColleen Logo"
           width={120}
           height={120}
@@ -28,6 +26,4 @@ const Splash = () => {
       </div>
     </div>
   );
-};
-
-export default Splash;
+}
