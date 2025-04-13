@@ -48,7 +48,10 @@ spacing of collections heading
 
 ## For Dad
 
-* Main Page - tagline - A posthummus gallery of the Works of Colleen Godley (1951-2011)?
+* Main Page - tagline 
+  - A posthummus gallery of the Works of Colleen Godley (1951-2011)?
+  - Artworks of Colleen Godley (1951-2011)?
+  - Something else?
 * mention ricky more?
 * "filler" text, yay or nei?
 * Make titles art gallery style?
