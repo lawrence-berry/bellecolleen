@@ -11,11 +11,11 @@
 
 /* Adjust nav buttons position in fullscreen */
 .modal-content.fullscreen .modal-nav-button.prev {
-  left: 30px;
+  left: 15px;
 }
 
 .modal-content.fullscreen .modal-nav-button.next {
-  right: 30px;
+  right:15px;
 }
 
 .fullscreen-icon {
