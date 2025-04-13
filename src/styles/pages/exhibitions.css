@@ -1,13 +1,13 @@
 .exhibitions {
-  padding: 4rem 2rem;
+  padding: 4rem 0;
   max-width: 1000px;
   margin: 0 auto;
 }
 
 .exhibitions-title {
-  font-size: 2.5rem;
   text-align: center;
-  margin-bottom: 4rem;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
   font-weight: 300;
 }
 
@@ -16,27 +16,95 @@
   border-radius: 8px;
   padding: 3rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .exhibition-heading {
+  text-align: center;
   font-size: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   color: #1a1a1a;
 }
 
 .exhibition-subheading {
-  font-size: 1.1rem;
+  text-align: center;
   color: #666;
-  margin-bottom: 3rem;
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
   font-weight: 400;
 }
 
 .exhibition-content {
-  display: block;
-  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 3rem;
   overflow: hidden; /* Creates new block formatting context */
 }
 
 .exhibition-image {
-  float: left;
+  align-self: center;
+}
+
+.exhibition-text p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.exhibition-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.exhibition-links a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.exhibition-links a:hover {
+  text-decoration: underline;
+}
+
+.catalogue-section {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: #f8f8f8;
+  border-radius: 0.5rem;
+}
+
+.catalogue-title {
+  text-align: center;
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  color: #666;
+}
+
+.catalogue-quote {
+  font-style: italic;
+  padding: 0 1rem;
+}
+
+.catalogue-quote p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.catalogue-quote footer {
+  text-align: right;
+  margin-top: 2rem;
+  font-style: normal;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .exhibitions {
+    padding: 2rem 1rem;
+  }
+  
+  .exhibition-content {
+    gap: 1.5rem;
+  }
 }

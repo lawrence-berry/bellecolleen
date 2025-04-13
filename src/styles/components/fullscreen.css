@@ -1,0 +1,38 @@
+.modal-overlay.fullscreen {
+  background: black;
+}
+
+.modal-content.fullscreen {
+  margin: 0;
+  max-width: 100vw;
+  max-height: 100vh;
+  padding: 0 60px; /* Add padding to prevent nav buttons being cut off */
+}
+
+/* Adjust nav buttons position in fullscreen */
+.modal-content.fullscreen .modal-nav-button.prev {
+  left: 30px;
+}
+
+.modal-content.fullscreen .modal-nav-button.next {
+  right: 30px;
+}
+
+.fullscreen-icon {
+  width: 26px;
+  height: 26px;
+}
+
+.modal-overlay.fullscreen .modal-controls,
+.modal-overlay.fullscreen .modal-title,
+.modal-overlay.fullscreen .modal-nav-button {
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.modal-overlay.fullscreen.controls-hidden .modal-controls,
+.modal-overlay.fullscreen.controls-hidden .modal-title,
+.modal-overlay.fullscreen.controls-hidden .modal-nav-button {
+  opacity: 0;
+  pointer-events: none;
+}

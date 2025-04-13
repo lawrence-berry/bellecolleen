@@ -13,6 +13,9 @@ export default function Collection() {
 
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [isSlideshowActive, setIsSlideshowActive] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [areControlsVisible, setAreControlsVisible] = useState(true);
+  let controlsTimer: NodeJS.Timeout;
 
   const toggleSlideshow = useCallback(() => {
     if (!selectedImage) {
@@ -36,9 +39,65 @@ export default function Collection() {
   }, []);
 
   const handleCloseModal = () => {
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    }
     setSelectedImage(null);
     setIsSlideshowActive(false);
+    setIsFullscreen(false);
   };
+
+  const toggleFullscreen = useCallback(() => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+      setIsFullscreen(true);
+    } else {
+      document.exitFullscreen();
+      setIsFullscreen(false);
+    }
+  }, []);
+
+  const handleMouseMove = useCallback(() => {
+    if (isFullscreen) {
+      setAreControlsVisible(true);
+      clearTimeout(controlsTimer);
+      controlsTimer = setTimeout(() => {
+        setAreControlsVisible(false);
+      }, 5000);
+    }
+  }, [isFullscreen]);
+
+  useEffect(() => {
+    if (isFullscreen) {
+      // Initial timer
+      controlsTimer = setTimeout(() => {
+        setAreControlsVisible(false);
+      }, 5000);
+
+      // Add mouse move listener
+      document.addEventListener('mousemove', handleMouseMove);
+    } else {
+      setAreControlsVisible(true);
+      clearTimeout(controlsTimer);
+      document.removeEventListener('mousemove', handleMouseMove);
+    }
+
+    return () => {
+      clearTimeout(controlsTimer);
+      document.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, [isFullscreen, handleMouseMove]);
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      if (!document.fullscreenElement) {
+        setIsFullscreen(false);
+      }
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  }, []);
 
   useEffect(() => {
     if (isSlideshowActive) {
@@ -49,8 +108,8 @@ export default function Collection() {
 
   useEffect(() => {
     if (artwork && typeof artwork === 'string') {
-      // Find the index of the artwork by matching the filename
-      const index = allItems.findIndex(item => item.image === artwork);
+      // Find the index of the artwork by matching the title
+      const index = allItems.findIndex(item => item.title === decodeURIComponent(artwork));
       if (index !== -1) {
         setSelectedImage(index + 1);
       }
@@ -108,9 +167,35 @@ export default function Collection() {
           </div>
 
           {selectedImage && (
-            <div className="modal-overlay" onClick={handleCloseModal}>
-              <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div 
+              className={`modal-overlay ${isFullscreen ? 'fullscreen' : ''} ${
+                !areControlsVisible && isFullscreen ? 'controls-hidden' : ''
+              }`} 
+              onClick={handleCloseModal}
+              onMouseMove={handleMouseMove}
+            >
+              <div className={`modal-content ${isFullscreen ? 'fullscreen' : ''}`} onClick={(e) => e.stopPropagation()}>
                 <div className="modal-controls">
+                  <button 
+                    className="modal-control-button"
+                    onClick={toggleFullscreen}
+                    title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
+                  >
+                    <svg 
+                      className="fullscreen-icon" 
+                      viewBox="0 0 24 24" 
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={1.5}
+                      aria-hidden="true"
+                    >
+                      {isFullscreen ? (
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 9V4.5M9 9H4.5M9 9L3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9h4.5M15 9V4.5M15 9l5.25-5.25M15 15h4.5M15 15v4.5m0-4.5l5.25 5.25" />
+                      ) : (
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+                      )}
+                    </svg>
+                  </button>
                   <button 
                     className="modal-control-button"
                     onClick={(e) => {

@@ -37,3 +37,20 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 * Responsive layout
 * Deployment
 * SEO
+
+## Snagging
+
+* Logo text and image alignment
+* Slideshow button
+* control positioning between modal and fullscreen mode
+* spacing of exhhibitions page
+spacing of collections heading
+
+## For Dad
+
+* Main Page - tagline - A posthummus gallery of the Works of Colleen Godley (1951-2011)?
+* mention ricky more?
+* "filler" text, yay or nei?
+* Make titles art gallery style?
+* No chance of dates for painting? Would it be better just to mention the years in which she painted for all?
+* What happened to the horse?

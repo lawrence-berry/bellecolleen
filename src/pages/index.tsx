@@ -38,7 +38,7 @@ export default function Home() {
               {featuredItems.map((item) => (
                 <Link 
                   key={item.id} 
-                  href={`/collection?artwork=${encodeURIComponent(item.image)}`}
+                  href={`/collection?artwork=${encodeURIComponent(item.title)}`}
                   className="card"
                 >
                   <div className="card-image-container">

@@ -39,7 +39,7 @@
 }
 
 .modal-nav-button {
-  position: absolute; /* Changed from fixed */
+  position: absolute;
   top: 50%;
   transform: translateY(-50%);
   background: none;
@@ -67,11 +67,11 @@
 
 .modal-controls {
   position: absolute;
-  top: 1.2rem;  /* Fixed distance from top instead of percentage */
-  right: -1rem;
+  top: 1rem;
+  right: 1rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
   z-index: 1001;
 }
 
@@ -84,7 +84,10 @@
   transition: opacity 0.2s;
   display: flex;
   align-items: center;
-  height: 32px; /* Match the icon height */
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  padding: 0;
 }
 
 .modal-close {
@@ -97,8 +100,11 @@
   transition: opacity 0.2s;
   display: flex;
   align-items: center;
-  height: 32px; /* Match the play button height */
+  justify-content: center;
+  height: 32px;
+  width: 32px;
   line-height: 1;
+  padding: 0;
 }
 
 .modal-control-button:hover,
@@ -107,11 +113,16 @@
 }
 
 .play-icon {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
 }
 
 .modal-control-icon {
   width: 28px;
   height: 28px;
+}
+
+.fullscreen-icon {
+  width: 26px;
+  height: 26px;
 }
