@@ -40,11 +40,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Snagging
 
-* Logo text and image alignment
-* Slideshow button
-* control positioning between modal and fullscreen mode
-* spacing of exhhibitions page
-spacing of collections heading
+* spacing of collections heading
 
 ## For Dad
 

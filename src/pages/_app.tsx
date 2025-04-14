@@ -4,6 +4,7 @@ import Head from "next/head";
 import '../styles/components/fullscreen.css';
 import '../styles/pages/exhibitions.css';
 import '../styles/components/layout.css';
+import '../styles/pages/about.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

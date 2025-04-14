@@ -5,10 +5,10 @@
 }
 
 .exhibitions-title {
+  font-weight: bold;
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 3rem;
-  font-weight: 300;
 }
 
 .exhibition-feature {
