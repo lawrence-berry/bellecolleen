@@ -79,4 +79,4 @@ install:
 # Add install to deployment process
 .PHONY: deploy
 deploy: install
-		npm run build && npm run export
+		npm run build

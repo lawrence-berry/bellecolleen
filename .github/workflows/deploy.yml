@@ -24,9 +24,9 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build && npm run export
+        run: npm run build
         env:
-          NEXT_PUBLIC_BASE_PATH: '/bellecolleenv2'
+          NEXT_PUBLIC_BASE_PATH: '/bellecolleen'
 
       - name: Add .nojekyll file
         run: touch out/.nojekyll
