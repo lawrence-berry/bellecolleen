@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useState, useCallback, useEffect } from 'react';
 import collectionData from '../data/collection.json';
 import { useRouter } from 'next/router';
+import { getImagePath } from '../utils/imagePath';
 
 // Replace the hardcoded allItems with the imported data
 const allItems = collectionData.items;
@@ -153,7 +154,7 @@ export default function Collection() {
               >
                 <div className="collection-image-container">
                   <Image
-                    src={item.image}
+                    src={getImagePath(item.image)}
                     alt={item.title}
                     fill
                     style={{ objectFit: 'cover' }}
@@ -223,7 +224,7 @@ export default function Collection() {
                   item.id === selectedImage && (
                     <div key={item.id} className="modal-image-container">
                       <Image
-                        src={item.image}
+                        src={getImagePath(item.image)}
                         alt={item.title}
                         fill
                         style={{ objectFit: 'contain' }}

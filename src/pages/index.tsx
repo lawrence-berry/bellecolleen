@@ -3,6 +3,7 @@ import Splash from '../components/Splash';
 import Image from 'next/image';
 import Link from 'next/link';
 import featuredData from '../data/featured.json';
+import { getImagePath } from '../utils/imagePath';
 
 export default function Home() {
   const { hero, items: featuredItems } = featuredData;
@@ -13,7 +14,7 @@ export default function Home() {
       <div>
         <div className="hero">
           <Image
-            src={hero.image}
+            src={getImagePath(hero.image)}
             alt={hero.alt}
             fill
             style={{ objectFit: 'cover' }}
@@ -43,7 +44,7 @@ export default function Home() {
                 >
                   <div className="card-image-container">
                     <Image
-                      src={item.image}
+                      src={getImagePath(item.image)}
                       alt={item.title}
                       fill
                       style={{ objectFit: 'cover' }}

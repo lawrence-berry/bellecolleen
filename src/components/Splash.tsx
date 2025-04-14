@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { getImagePath } from '../utils/imagePath';
 
 export default function Splash() {
   const [isVisible, setIsVisible] = useState(true);
@@ -16,7 +17,7 @@ export default function Splash() {
     <div className={`splash ${!isVisible ? 'splash-exit' : ''}`}>
       <div className="splash-content">
         <Image
-          src="/images/main-logo.png"
+          src={getImagePath("/images/main-logo.png")}
           alt="BelleColleen Logo"
           width={120}
           height={120}

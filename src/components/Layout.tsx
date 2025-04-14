@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getImagePath } from '../utils/imagePath';
 
 interface LayoutProps {
   children: ReactNode;
@@ -14,7 +15,7 @@ export default function Layout({ children }: LayoutProps) {
           <Link href="/" className="nav-brand-link">
             <div className="site-logo">
               <Image
-                src="/images/main-logo.png"
+                src={getImagePath("/images/main-logo.png")}
                 alt="BelleColleen Logo"
                 width={48}
                 height={48}
