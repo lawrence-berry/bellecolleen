@@ -29,13 +29,20 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## Deployment
+
+Deployed to the github pages page https://lawrence-berry.github.io/bellecolleen/collection, from the gh-pages branch which is written to during the deploy.yml Github action.
+
+## Adding new images
+
+Add them into public/images/artworks, then run scripts/generate-collection.js.
+
 ## TODO
 
 * Dark mode
 * Accessible
 * Performance
 * Responsive layout
-* Deployment
 * SEO
 
 ## For Dad
