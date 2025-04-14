@@ -36,7 +36,7 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages
+          branch: main
           folder: out
           clean: true
           token: ${{ secrets.BELLCOLLEEN_DEPLOY_ACCESS_TOKEN }}

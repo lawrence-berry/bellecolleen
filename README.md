@@ -38,10 +38,6 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 * Deployment
 * SEO
 
-## Snagging
-
-* spacing of collections heading
-
 ## For Dad
 
 * Main Page - tagline 
@@ -53,3 +49,4 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 * Make titles art gallery style?
 * No chance of dates for painting? Would it be better just to mention the years in which she painted for all?
 * What happened to the horse?
+* Pay for a domain?
