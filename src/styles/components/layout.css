@@ -1,0 +1,11 @@
+.nav-brand-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-brand-link:hover {
+  opacity: 0.8;
+}

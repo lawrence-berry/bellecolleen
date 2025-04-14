@@ -11,16 +11,18 @@ export default function Layout({ children }: LayoutProps) {
     <div className="container">
       <nav className="nav">
         <div className="nav-brand">
-          <div className="site-logo">
-            <Image
-              src="/images/main-logo.png"
-              alt="BelleColleen Logo"
-              width={48}
-              height={48}
-              priority
-            />
-          </div>
-          <Link href="/">BelleColleen</Link>
+          <Link href="/" className="nav-brand-link">
+            <div className="site-logo">
+              <Image
+                src="/images/main-logo.png"
+                alt="BelleColleen Logo"
+                width={48}
+                height={48}
+                priority
+              />
+            </div>
+            <span>BelleColleen</span>
+          </Link>
         </div>
         <div className="nav-links">
           <Link href="/">Home</Link>
@@ -32,7 +34,7 @@ export default function Layout({ children }: LayoutProps) {
       </nav>
       <main>{children}</main>
       <footer className="footer">
-        <p>© 2024 BelleColleen. All rights reserved.</p>
+        <p>© 2025 BelleColleen. All rights reserved.</p>
       </footer>
     </div>
   );

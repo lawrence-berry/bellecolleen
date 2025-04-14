@@ -57,15 +57,26 @@ logs:
 	docker ps -q --filter "ancestor=$(DEV_IMAGE)" | xargs -r docker logs -f
 
 # Combined commands
-.PHONY: dev-start
-dev-start: dev-build dev
+.PHONY: start
+start: install dev-build dev
 
 .PHONY: prod-start
 prod-start: prod-build prod
 
 # Restart commands
-.PHONY: dev-restart
-dev-restart: dev-clean dev-start
+.PHONY: restart
+restart: dev-clean start
 
 open:
 	open http://localhost:3000
+
+# Package management commands
+.PHONY: install
+install:
+		rm -rf node_modules package-lock.json
+		npm install
+
+# Add install to deployment process
+.PHONY: deploy
+deploy: install
+		npm run build && npm run export

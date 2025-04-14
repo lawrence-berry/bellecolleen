@@ -5,9 +5,9 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 First, run the development server:
 
 ```bash
-make dev-start
+make start
 or
-make dev-restart (if making changes which require re-creation of the container)
+make restart (if making changes which require re-creation of the container)
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
