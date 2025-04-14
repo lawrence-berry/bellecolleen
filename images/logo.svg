@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Picture Frame -->
+  <rect x="6" y="6" width="36" height="36" rx="2" stroke="black" stroke-width="2" fill="none"/>
+  
+  <!-- Sitting Cat Silhouette -->
+  <path d="M24 12 
+           C22 12 20 13 19 14
+           C18 15 17 17 17 19
+           C17 21 18 24 19 25
+           C20 26 21 27 24 27
+           C27 27 28 26 29 25
+           C30 24 31 21 31 19
+           C31 17 30 15 29 14
+           C28 13 26 12 24 12Z
+           M19 25
+           C19 28 20 32 24 32
+           C28 32 29 28 29 25
+           M22 18
+           C22 19 21.5 20 21 20
+           C20.5 20 20 19 20 18
+           C20 17 20.5 16 21 16
+           C21.5 16 22 17 22 18Z
+           M28 18
+           C28 19 27.5 20 27 20
+           C26.5 20 26 19 26 18
+           C26 17 26.5 16 27 16
+           C27.5 16 28 17 28 18Z" 
+    fill="black"/>
+</svg> 
