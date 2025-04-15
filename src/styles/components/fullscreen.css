@@ -6,7 +6,12 @@
   margin: 0;
   max-width: 100vw;
   max-height: 100vh;
-  padding: 0 60px; /* Add padding to prevent nav buttons being cut off */
+}
+
+@media (min-width: 768px) {
+  .modal-content.fullscreen {
+    padding: 0 60px;
+  }
 }
 
 /* Adjust nav buttons position in fullscreen */
