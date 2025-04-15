@@ -1,6 +1,7 @@
 import Layout from '../components/Layout';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getImagePath } from '../utils/imagePath';
 
 export default function Exhibitions() {
   return (
@@ -16,7 +17,7 @@ export default function Exhibitions() {
             <div className="exhibition-content">
               <div className="exhibition-image">
                 <Image
-                  src="/images/big_see_flyer.jpg"
+                  src={getImagePath("/images/big_see_flyer.jpg")}
                   alt="The Big See Exhibition Flyer"
                   width={320}
                   height={220}
