@@ -13,7 +13,7 @@
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.25);
   z-index: 2;
   display: flex;
   align-items: center;
@@ -44,54 +44,57 @@
 
 .featured-title {
   text-align: center;
-  margin-bottom: 2rem;
-  font-size: 2.5rem;
+  margin-bottom: 2.5rem;
+  font-size: 1.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
 .featured-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
 .card {
   display: block;
   text-decoration: none;
   color: inherit;
-  transition: transform 0.2s;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.card:hover {
-  transform: translateY(-4px);
 }
 
 .card-image-container {
   position: relative;
   width: 100%;
   padding-bottom: 75%;
+  overflow: hidden;
+}
+
+.card-image-container img {
+  transition: transform 0.4s ease;
+}
+
+.card:hover .card-image-container img {
+  transform: scale(1.03);
 }
 
 .card-content {
-  padding: 1.5rem;
+  padding: 1.25rem 0 0;
   text-align: center;
 }
 
 .card-title {
-  margin-bottom: 0.5rem;
-  font-size: 1.25rem;
+  margin-bottom: 0.375rem;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .card-description {
-  color: #666;
-  margin-bottom: 1rem;
+  color: var(--muted);
+  font-size: 0.9375rem;
 }
 
 .card-link {
-  color: #2563eb;
+  color: var(--ink);
   font-weight: 500;
 }
 

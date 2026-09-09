@@ -23,11 +23,6 @@
   right:15px;
 }
 
-.fullscreen-icon {
-  width: 26px;
-  height: 26px;
-}
-
 .modal-overlay.fullscreen .modal-controls,
 .modal-overlay.fullscreen .modal-title,
 .modal-overlay.fullscreen .modal-nav-button {

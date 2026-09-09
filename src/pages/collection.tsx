@@ -41,7 +41,7 @@ export default function Collection() {
 
   const handleCloseModal = () => {
     if (document.fullscreenElement) {
-      document.exitFullscreen();
+      document.exitFullscreen().catch(() => {});
     }
     setSelectedImage(null);
     setIsSlideshowActive(false);
@@ -50,10 +50,15 @@ export default function Collection() {
 
   const toggleFullscreen = useCallback(() => {
     if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen();
-      setIsFullscreen(true);
+      // requestFullscreen() can reject (denied permissions policy, no
+      // user activation, etc.) - only flip the UI state once it actually
+      // succeeds, otherwise we're left showing a fullscreen UI that isn't.
+      document.documentElement
+        .requestFullscreen()
+        .then(() => setIsFullscreen(true))
+        .catch(() => {});
     } else {
-      document.exitFullscreen();
+      document.exitFullscreen().catch(() => {});
       setIsFullscreen(false);
     }
   }, []);
@@ -123,25 +128,17 @@ export default function Collection() {
         <section className="collection">
           <div className="collection-header">
             <h1 className="collection-title">Complete Collection</h1>
-            <button 
-              className="collection-slideshow-button"
+            <button
+              className="icon-btn collection-slideshow-button"
               onClick={toggleSlideshow}
-              title="Start/Pause Slideshow"
+              title={isSlideshowActive ? 'Pause Slideshow' : 'Start Slideshow'}
             >
-              <svg 
-                className="collection-play-icon" 
-                viewBox="0 0 24 24" 
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={1.5}
-                style={{ 
-                  background: 'black', 
-                  borderRadius: '50%',
-                  padding: '8px'
-                }}
-                aria-hidden="true"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21 7.5V18M15 7.5V18M3 16.811V8.69c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061A1.125 1.125 0 0 1 3 16.811Z" />
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                {isSlideshowActive ? (
+                  <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                ) : (
+                  <path d="M8 5v14l11-7z" />
+                )}
               </svg>
             </button>
           </div>
@@ -177,14 +174,14 @@ export default function Collection() {
             >
               <div className={`modal-content ${isFullscreen ? 'fullscreen' : ''}`} onClick={(e) => e.stopPropagation()}>
                 <div className="modal-controls">
-                  <button 
-                    className="modal-control-button"
+                  <button
+                    className="icon-btn modal-control-button"
                     onClick={toggleFullscreen}
                     title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
                   >
-                    <svg 
-                      className="fullscreen-icon" 
-                      viewBox="0 0 24 24" 
+                    <svg
+                      className="fullscreen-icon"
+                      viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth={1.5}
@@ -197,17 +194,17 @@ export default function Collection() {
                       )}
                     </svg>
                   </button>
-                  <button 
-                    className="modal-control-button"
+                  <button
+                    className="icon-btn modal-control-button"
                     onClick={(e) => {
                       e.stopPropagation();
                       toggleSlideshow();
                     }}
                     title={isSlideshowActive ? "Pause Slideshow" : "Start Slideshow"}
                   >
-                    <svg 
-                      className="play-icon" 
-                      viewBox="0 0 24 24" 
+                    <svg
+                      className="play-icon"
+                      viewBox="0 0 24 24"
                       fill="currentColor"
                       aria-hidden="true"
                     >
@@ -218,7 +215,11 @@ export default function Collection() {
                       )}
                     </svg>
                   </button>
-                  <button className="modal-close" onClick={handleCloseModal}>&times;</button>
+                  <button className="icon-btn modal-close" onClick={handleCloseModal} title="Close" aria-label="Close">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
                 </div>
                 {allItems.map((item) => (
                   item.id === selectedImage && (
@@ -234,8 +235,16 @@ export default function Collection() {
                     </div>
                   )
                 ))}
-                <button className="modal-nav-button prev" onClick={previousSlide}>&lt;</button>
-                <button className="modal-nav-button next" onClick={nextSlide}>&gt;</button>
+                <button className="icon-btn modal-nav-button prev" onClick={previousSlide} title="Previous" aria-label="Previous">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 18l-6-6 6-6" />
+                  </svg>
+                </button>
+                <button className="icon-btn modal-nav-button next" onClick={nextSlide} title="Next" aria-label="Next">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 18l6-6-6-6" />
+                  </svg>
+                </button>
               </div>
             </div>
           )}
