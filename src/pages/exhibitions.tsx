@@ -41,22 +41,6 @@ export default function Exhibitions() {
                 </div>
               </div>
             </div>
-
-            <div className="catalogue-section">
-              <h4 className="catalogue-title">From the catalogue produced for The Big See (16 June to 7 July 2012)</h4>
-              
-              <blockquote className="catalogue-quote">
-                <p>On behalf of Maggie's Highlands I would like to welcome you to The Big See. Buying this catalogue will help Maggie's provide free, comprehensive support of people affected by cancer throughout the Highlands and Islands - a big thank you. This is a different kind of fundraising art exhibition as the fourteen artists kindly donating their work have been affected by cancer in one way or another. The idea came originally from Simon Berry, after his wife Colleen died suddenly from cancer of the thymus. While Colleen was having treatment she attended our inspirational Maggie's Centre beside Raigmore Hospital; she hadn't shown her paintings to anyone, however after Simon showed them to some of the artists exhibiting here, the idea of The Big See was born.</p>
-                
-                <p>I hope that you will decide to buy something from this exciting show. Whether an original or a print, we hope it will give you pleasure and may even prove an investment. It definitely will help Maggie's forge ahead with developing the range of services we can offer to provide the support people in the Highlands who have a diagnosis of cancer, their families, friends and work colleagues tell us they need.</p>
-                
-                <p>A huge thank you to the Inchmore Gallery, to the artists, to Simon for bringing this together and to you for supporting this exhibition.</p>
-                
-                <footer>
-                  <cite>Philippa Grant of Rothiemurchus M.B.E., Associate Board Chairwoman of Maggie's Highlands</cite>
-                </footer>
-              </blockquote>
-            </div>
           </article>
         </section>
       </div>
