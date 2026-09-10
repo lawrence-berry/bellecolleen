@@ -24,6 +24,40 @@
   position: relative;
   width: 100%;
   height: 100%;
+  view-transition-name: modal-artwork;
+}
+
+/* Crossfades slides into one another (View Transitions API) with a
+   slow Ken Burns drift, instead of a hard cut. Browsers without
+   support (Firefox, as of writing) just get the instant swap. */
+@keyframes modal-artwork-merge-in {
+  from {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes modal-artwork-merge-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+}
+
+::view-transition-old(modal-artwork) {
+  animation: modal-artwork-merge-out 900ms ease-in both;
+}
+
+::view-transition-new(modal-artwork) {
+  animation: modal-artwork-merge-in 900ms ease-out both;
 }
 
 .modal-title {

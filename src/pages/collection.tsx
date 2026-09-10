@@ -1,12 +1,43 @@
 import Layout from '../components/Layout';
 import Image from 'next/image';
 import { useState, useCallback, useEffect } from 'react';
+import { flushSync } from 'react-dom';
 import collectionData from '../data/collection.json';
 import { useRouter } from 'next/router';
 import { getImagePath } from '../utils/imagePath';
 
 // Replace the hardcoded allItems with the imported data
 const allItems = collectionData.items;
+
+// True while a view transition's animation is playing.
+let transitionInFlight = false;
+
+// Runs a state update inside the View Transitions API when the browser
+// supports it, so the outgoing/incoming artwork crossfade instead of
+// cutting instantly. flushSync forces React to commit synchronously so
+// the DOM mutation happens inside the transition's callback, which the
+// API requires to capture a before/after snapshot pair.
+function withSlideTransition(update: () => void) {
+  if (typeof document === 'undefined' || !document.startViewTransition) {
+    update();
+    return;
+  }
+  if (transitionInFlight) {
+    // Mutating state while a transition is capturing/animating - even
+    // via a plain setState outside the transition's own callback -
+    // corrupts it and makes the browser report an uncaught
+    // "InvalidStateError: Transition was aborted", even though we never
+    // call startViewTransition a second time. So rapid clicks during an
+    // animation are dropped rather than falling back to a plain update.
+    return;
+  }
+
+  transitionInFlight = true;
+  const transition = document.startViewTransition(() => flushSync(update));
+  transition.finished.catch(() => {}).finally(() => {
+    transitionInFlight = false;
+  });
+}
 
 export default function Collection() {
   const router = useRouter();
@@ -26,16 +57,20 @@ export default function Collection() {
   }, [selectedImage]);
 
   const nextSlide = useCallback(() => {
-    setSelectedImage(current => {
-      if (!current) return 1;
-      return current === allItems.length ? 1 : current + 1;
+    withSlideTransition(() => {
+      setSelectedImage(current => {
+        if (!current) return 1;
+        return current === allItems.length ? 1 : current + 1;
+      });
     });
   }, []);
 
   const previousSlide = useCallback(() => {
-    setSelectedImage(current => {
-      if (!current) return allItems.length;
-      return current === 1 ? allItems.length : current - 1;
+    withSlideTransition(() => {
+      setSelectedImage(current => {
+        if (!current) return allItems.length;
+        return current === 1 ? allItems.length : current - 1;
+      });
     });
   }, []);
 

@@ -65,4 +65,32 @@ test.describe('Collection gallery slideshow', () => {
     await page.locator('.collection-item', { hasText: 'Anima' }).click();
     await expect(page.locator('.modal-control-button').nth(1)).toHaveAttribute('title', 'Start Slideshow');
   });
+
+  test('rapid next clicks (crossfade transition) do not corrupt the page', async ({ page }) => {
+    // Regression test: firing next/prev in a tight burst used to let a
+    // second view transition start (or a plain state update land) while
+    // the first was still animating, which corrupted the browser's
+    // transition and left the whole page stuck blank until reload.
+    const errors: string[] = [];
+    page.on('pageerror', (err) => errors.push(err.message));
+    page.on('console', (msg) => {
+      if (msg.type() === 'error') errors.push(msg.text());
+    });
+
+    await page.locator('.collection-item', { hasText: 'Anima' }).click();
+    await expect(page.locator('.modal-title')).toHaveText('Anima');
+
+    await page.evaluate(() => {
+      const btn = document.querySelector('.modal-nav-button.next') as HTMLElement;
+      for (let i = 0; i < 15; i++) btn.click();
+    });
+
+    // Let any in-flight transition settle before asserting final state.
+    await page.waitForTimeout(1200);
+
+    await expect(page.locator('.modal-overlay')).toBeVisible();
+    await expect(page.locator('.modal-title')).toBeVisible();
+    await expect(page.locator('.modal-image-container img')).toBeVisible();
+    expect(errors).toEqual([]);
+  });
 });
