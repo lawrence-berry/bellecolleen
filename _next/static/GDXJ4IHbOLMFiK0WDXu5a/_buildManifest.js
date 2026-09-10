@@ -9,13 +9,13 @@ self.__BUILD_MANIFEST = {
     "static/chunks/3icjj7fr51nf0.js"
   ],
   "/collection": [
-    "static/chunks/2-s0-mycu-k_8.js"
+    "static/chunks/01e8lraktu87z.js"
   ],
   "/contact": [
     "static/chunks/02h-u6hf2paj7.js"
   ],
   "/exhibitions": [
-    "static/chunks/24v-k9-nlxpof.js"
+    "static/chunks/1yjn7sq-p4-xv.js"
   ],
   "__rewrites": {
     "afterFiles": [],
