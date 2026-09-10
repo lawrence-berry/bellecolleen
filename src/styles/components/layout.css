@@ -1,3 +1,21 @@
+.body-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+/* Establishes its own stacking context so it reliably paints above
+   .body-bg regardless of z-index/canvas-background edge cases. */
+.page-content {
+  position: relative;
+  z-index: 1;
+}
+
 .nav-brand-link {
   display: flex;
   align-items: center;
