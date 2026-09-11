@@ -25,6 +25,7 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <div className="container">
+      <a href="#main-content" className="skip-link">Skip to content</a>
       <div
         className="body-bg"
         style={{ backgroundImage: `url("${getImagePath(bgImage)}")` }}
@@ -37,7 +38,7 @@ export default function Layout({ children }: LayoutProps) {
               <div className="site-logo">
                 <Image
                   src={getImagePath("/images/main-logo.png")}
-                  alt="BelleColleen Logo"
+                  alt=""
                   width={48}
                   height={48}
                   priority
@@ -54,7 +55,7 @@ export default function Layout({ children }: LayoutProps) {
             <Link href="/contact">Contact</Link>
           </div>
         </nav>
-        <main>{children}</main>
+        <main id="main-content" tabIndex={-1}>{children}</main>
         <footer className="footer">
           <p>© 2025 BelleColleen. All rights reserved.</p>
         </footer>

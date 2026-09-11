@@ -1,6 +1,7 @@
+import Head from 'next/head';
 import Layout from '../components/Layout';
 import Image from 'next/image';
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { flushSync } from 'react-dom';
 import collectionData from '../data/collection.json';
 import { useRouter } from 'next/router';
@@ -17,8 +18,12 @@ let transitionInFlight = false;
 // cutting instantly. flushSync forces React to commit synchronously so
 // the DOM mutation happens inside the transition's callback, which the
 // API requires to capture a before/after snapshot pair.
+function prefersReducedMotion() {
+  return typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
 function withSlideTransition(update: () => void) {
-  if (typeof document === 'undefined' || !document.startViewTransition) {
+  if (typeof document === 'undefined' || !document.startViewTransition || prefersReducedMotion()) {
     update();
     return;
   }
@@ -47,6 +52,8 @@ export default function Collection() {
   const [isSlideshowActive, setIsSlideshowActive] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [areControlsVisible, setAreControlsVisible] = useState(true);
+  const modalContentRef = useRef<HTMLDivElement>(null);
+  const previouslyFocusedRef = useRef<HTMLElement | null>(null);
   let controlsTimer: NodeJS.Timeout;
 
   const toggleSlideshow = useCallback(() => {
@@ -157,8 +164,61 @@ export default function Collection() {
     }
   }, [artwork]);
 
+  // Modal focus management: move focus in on open, trap Tab within the
+  // dialog, close on Escape, and restore focus to whatever opened it.
+  // Keyed on open/closed rather than selectedImage itself, so navigating
+  // between slides doesn't re-trigger this (focus should stay put then).
+  const isModalOpen = selectedImage !== null;
+  useEffect(() => {
+    if (!isModalOpen) return;
+
+    previouslyFocusedRef.current = document.activeElement as HTMLElement | null;
+    modalContentRef.current?.focus();
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        handleCloseModal();
+        return;
+      }
+      if (e.key !== 'Tab' || !modalContentRef.current) return;
+
+      const focusable = modalContentRef.current.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      // The dialog container itself (tabIndex=-1, holds focus right after
+      // opening) isn't in `focusable` and isn't part of the browser's
+      // normal tab order, so Shift+Tab from it falls back to DOM order and
+      // escapes straight past the modal into the page behind it. Treat
+      // focus being on the container the same as focus being on `first`.
+      const atStart = document.activeElement === first || document.activeElement === modalContentRef.current;
+
+      if (e.shiftKey && atStart) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      previouslyFocusedRef.current?.focus();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isModalOpen]);
+
   return (
     <Layout>
+      <Head>
+        <title>Collection | BelleColleen</title>
+      </Head>
       <div className="container">
         <section className="collection">
           <div className="collection-header">
@@ -167,6 +227,7 @@ export default function Collection() {
               className="icon-btn collection-slideshow-button"
               onClick={toggleSlideshow}
               title={isSlideshowActive ? 'Pause Slideshow' : 'Start Slideshow'}
+              aria-label={isSlideshowActive ? 'Pause Slideshow' : 'Start Slideshow'}
             >
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 {isSlideshowActive ? (
@@ -179,23 +240,25 @@ export default function Collection() {
           </div>
           <div className="collection-grid">
             {allItems.map((item) => (
-              <div 
-                key={item.id} 
+              <button
+                type="button"
+                key={item.id}
                 className="collection-item"
                 onClick={() => setSelectedImage(item.id)}
+                aria-label={`View ${item.title}`}
               >
                 <div className="collection-image-container">
                   <Image
                     src={getImagePath(item.image)}
-                    alt={item.title}
+                    alt=""
                     fill
                     style={{ objectFit: 'cover' }}
                   />
                 </div>
                 <div className="collection-item-overlay">
-                  <h3 className="collection-item-title">{item.title}</h3>
+                  <span className="collection-item-title">{item.title}</span>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
 
@@ -207,12 +270,21 @@ export default function Collection() {
               onClick={handleCloseModal}
               onMouseMove={handleMouseMove}
             >
-              <div className={`modal-content ${isFullscreen ? 'fullscreen' : ''}`} onClick={(e) => e.stopPropagation()}>
+              <div
+                ref={modalContentRef}
+                className={`modal-content ${isFullscreen ? 'fullscreen' : ''}`}
+                onClick={(e) => e.stopPropagation()}
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="collection-modal-title"
+                tabIndex={-1}
+              >
                 <div className="modal-controls">
                   <button
                     className="icon-btn modal-control-button"
                     onClick={toggleFullscreen}
                     title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
+                    aria-label={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
                   >
                     <svg
                       className="fullscreen-icon"
@@ -236,6 +308,7 @@ export default function Collection() {
                       toggleSlideshow();
                     }}
                     title={isSlideshowActive ? "Pause Slideshow" : "Start Slideshow"}
+                    aria-label={isSlideshowActive ? "Pause Slideshow" : "Start Slideshow"}
                   >
                     <svg
                       className="play-icon"
@@ -261,12 +334,12 @@ export default function Collection() {
                     <div key={item.id} className="modal-image-container">
                       <Image
                         src={getImagePath(item.image)}
-                        alt={item.title}
+                        alt=""
                         fill
                         style={{ objectFit: 'contain' }}
                         priority
                       />
-                      <div className="modal-title">{item.title}</div>
+                      <div className="modal-title" id="collection-modal-title">{item.title}</div>
                     </div>
                   )
                 ))}

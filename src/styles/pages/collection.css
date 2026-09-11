@@ -33,10 +33,22 @@
 }
 
 .collection-item {
+  display: block;
   position: relative;
   overflow: hidden;
   aspect-ratio: 1;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  text-align: inherit;
   cursor: pointer;
+}
+
+.collection-item:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: -2px;
 }
 
 .collection-image-container {
@@ -55,7 +67,8 @@
   transition: opacity 0.2s;
 }
 
-.collection-item:hover .collection-item-overlay {
+.collection-item:hover .collection-item-overlay,
+.collection-item:focus-visible .collection-item-overlay {
   opacity: 1;
 }
 

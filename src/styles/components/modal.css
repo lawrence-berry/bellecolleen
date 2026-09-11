@@ -60,6 +60,18 @@
   animation: modal-artwork-merge-in 900ms ease-out both;
 }
 
+/* The universal-selector reduced-motion rule in globals.css can't reach
+   these UA pseudo-elements, so they need their own override. Belt and
+   braces alongside the matchMedia check in collection.tsx, which skips
+   the View Transitions API entirely for these users. */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(modal-artwork),
+  ::view-transition-old(modal-artwork),
+  ::view-transition-new(modal-artwork) {
+    animation: none !important;
+  }
+}
+
 .modal-title {
   position: absolute;
   bottom: 24px;

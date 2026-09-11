@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Layout from '../components/Layout';
 
 export default function Contact() {
@@ -22,6 +23,9 @@ export default function Contact() {
 
   return (
     <Layout>
+      <Head>
+        <title>Contact | BelleColleen</title>
+      </Head>
       <div className="container">
         <section className="contact">
           <h1 className="contact-title">Contact Us</h1>
