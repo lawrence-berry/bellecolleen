@@ -1,12 +1,34 @@
+import { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
 import Splash from '../components/Splash';
 import Image from 'next/image';
 import Link from 'next/link';
 import featuredData from '../data/featured.json';
+import collectionData from '../data/collection.json';
 import { getImagePath } from '../utils/imagePath';
+import { seededShuffle } from '../utils/hash';
 
 export default function Home() {
-  const { hero, items: featuredItems } = featuredData;
+  const { hero, items: fallbackFeaturedItems } = featuredData;
+
+  // Picks a hero image plus 3 featured works that are "random" but stable
+  // for the whole calendar day, and never repeat each other (one shuffle,
+  // hero takes the first card, featured takes the next 3).
+  //
+  // This is a fully static export (built once, not per-request), so the
+  // date can only be read client-side after mount: computing it during
+  // render would bake in whatever day the site was last built on, which
+  // silently mismatches the client's real "today" on any later day and
+  // triggers a hydration error - not just a one-off risk, but guaranteed
+  // to happen the first time a day passes without a redeploy.
+  const [heroImage, setHeroImage] = useState(hero.image);
+  const [featuredItems, setFeaturedItems] = useState(fallbackFeaturedItems);
+  useEffect(() => {
+    const dayIndex = Math.floor(Date.now() / 86_400_000); // days since epoch
+    const shuffled = seededShuffle(collectionData.items, dayIndex);
+    setHeroImage(shuffled[0].image);
+    setFeaturedItems(shuffled.slice(1, 4));
+  }, []);
 
   return (
     <Layout>
@@ -14,8 +36,8 @@ export default function Home() {
       <div>
         <div className="hero">
           <Image
-            src={getImagePath(hero.image)}
-            alt={hero.alt}
+            src={getImagePath(heroImage)}
+            alt=""
             fill
             style={{ objectFit: 'cover' }}
             priority

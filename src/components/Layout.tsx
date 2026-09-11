@@ -1,27 +1,33 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { getImagePath } from '../utils/imagePath';
+import { hashString } from '../utils/hash';
 import collectionData from '../data/collection.json';
 
 interface LayoutProps {
   children: ReactNode;
 }
 
-function hashString(str: string) {
-  let hash = 0;
-  for (let i = 0; i < str.length; i++) {
-    hash = (hash << 5) - hash + str.charCodeAt(i);
-    hash |= 0;
-  }
-  return Math.abs(hash);
-}
+// SSR-safe fallback for the copyright year. This is a fully static export
+// (built once, not per-request), so reading the real year during render
+// would bake in whatever year the site was last built in - fine until the
+// clock actually ticks over to the next year without a rebuild, at which
+// point it would mismatch the client's real year and hydration would
+// error. Read after mount instead, same as the hero image/background
+// wash's day-based picks.
+const FALLBACK_YEAR = 2026;
 
 export default function Layout({ children }: LayoutProps) {
   const router = useRouter();
   const bgItems = collectionData.items;
   const bgImage = bgItems[hashString(router.pathname) % bgItems.length].image;
+
+  const [year, setYear] = useState(FALLBACK_YEAR);
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
 
   return (
     <div className="container">
@@ -57,7 +63,7 @@ export default function Layout({ children }: LayoutProps) {
         </nav>
         <main id="main-content" tabIndex={-1}>{children}</main>
         <footer className="footer">
-          <p>© 2025 BelleColleen. All rights reserved.</p>
+          <p>© {year} BelleColleen. All rights reserved.</p>
         </footer>
       </div>
     </div>
