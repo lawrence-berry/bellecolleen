@@ -1,5 +1,5 @@
-import Head from 'next/head';
 import Layout from '../components/Layout';
+import PageHead from '../components/PageHead';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getImagePath } from '../utils/imagePath';
@@ -7,9 +7,7 @@ import { getImagePath } from '../utils/imagePath';
 export default function Exhibitions() {
   return (
     <Layout>
-      <Head>
-        <title>Exhibitions | BelleColleen</title>
-      </Head>
+      <PageHead title="Exhibitions | BelleColleen" path="/exhibitions" />
       <div className="container">
         <section className="exhibitions">
           <h1 className="exhibitions-title">Exhibitions</h1>

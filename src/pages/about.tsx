@@ -1,12 +1,10 @@
-import Head from 'next/head';
 import Layout from '../components/Layout';
+import PageHead from '../components/PageHead';
 
 export default function About() {
   return (
     <Layout>
-      <Head>
-        <title>About | BelleColleen</title>
-      </Head>
+      <PageHead title="About | BelleColleen" path="/about" />
       <div className="container">
         <section className="about">
           <h1 className="about-title">About BelleColleen</h1>

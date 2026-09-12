@@ -1,5 +1,5 @@
-import Head from 'next/head';
 import Layout from '../components/Layout';
+import PageHead from '../components/PageHead';
 import Image from 'next/image';
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { flushSync } from 'react-dom';
@@ -216,9 +216,7 @@ export default function Collection() {
 
   return (
     <Layout>
-      <Head>
-        <title>Collection | BelleColleen</title>
-      </Head>
+      <PageHead title="Collection | BelleColleen" path="/collection" />
       <div className="container">
         <section className="collection">
           <div className="collection-header">

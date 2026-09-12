@@ -1,5 +1,5 @@
-import Head from 'next/head';
 import Layout from '../components/Layout';
+import PageHead from '../components/PageHead';
 
 export default function Contact() {
   const encodeEmail = (email: string) => {
@@ -23,9 +23,7 @@ export default function Contact() {
 
   return (
     <Layout>
-      <Head>
-        <title>Contact | BelleColleen</title>
-      </Head>
+      <PageHead title="Contact | BelleColleen" path="/contact" />
       <div className="container">
         <section className="contact">
           <h1 className="contact-title">Contact Us</h1>
