@@ -1,21 +1,24 @@
 self.__BUILD_MANIFEST = {
   "/": [
-    "static/chunks/2s03aobv1o57c.js"
+    "static/chunks/24ut51zewhmyy.js"
   ],
   "/_error": [
-    "static/chunks/0rq8fbaifgj96.js"
+    "static/chunks/3_vibbspcf165.js"
   ],
   "/about": [
-    "static/chunks/2r8492x9evde2.js"
+    "static/chunks/32oq5bf4035mc.js"
   ],
   "/collection": [
-    "static/chunks/2l5zb5o0v-eov.js"
+    "static/chunks/1beipu00x8shl.js"
   ],
   "/contact": [
-    "static/chunks/2oqu67j-zl00w.js"
+    "static/chunks/04np2-6-czojz.js"
   ],
   "/exhibitions": [
-    "static/chunks/3pw79r_rjjyc_.js"
+    "static/chunks/208htllh-_8d6.js"
+  ],
+  "/reveal": [
+    "static/chunks/1cark_pl4hnhk.js"
   ],
   "__rewrites": {
     "afterFiles": [],
@@ -30,6 +33,7 @@ self.__BUILD_MANIFEST = {
     "/api/hello",
     "/collection",
     "/contact",
-    "/exhibitions"
+    "/exhibitions",
+    "/reveal"
   ]
 };self.__BUILD_MANIFEST_CB && self.__BUILD_MANIFEST_CB()
